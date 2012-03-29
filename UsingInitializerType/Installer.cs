@@ -1,3 +1,6 @@
+using System.Collections;
+using System.Reflection;
+
 using Castle.Facilities.TypedFactory;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
@@ -20,7 +23,8 @@ namespace UsingInitializerType
                            .LifestyleTransient(),
                          Component
                            .For<IViewModelFactory>()
-                           .AsFactory());
+                           .AsFactory(c => c.SelectedWith<ScopedSelector>()),
+                         Component.For<ScopedSelector, ITypedFactoryComponentSelector>());
     }
   }
 }
