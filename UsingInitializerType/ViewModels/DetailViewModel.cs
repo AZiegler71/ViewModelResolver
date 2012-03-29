@@ -8,13 +8,13 @@ namespace UsingInitializerType.ViewModels
   {
     readonly IStore _store;
 
-    public DetailViewModel(IStore store)
+    // If you care for what's inside your TInitializer model,
+    // add the parameter to the ctor of the view.
+    // Compare to ListViewModel - where we're not interested in the model.
+    public DetailViewModel(IStore store, ShowCustomerDetails model)
     {
       _store = store;
-    }
 
-    public void SetModel(ShowCustomerDetails model)
-    {
       var c = _store.LoadCustomer(model.CustomerId);
       Console.WriteLine("Customer details: {0}, {1}", c.Name, c.Birthday);
     }

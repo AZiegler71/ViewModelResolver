@@ -19,7 +19,8 @@ namespace UsingInitializerType
         container.Install(new Installer());
 
         var factory = container.Resolve<IViewModelFactory>();
-        factory.Create(new ShowList());
+        var model = factory.Create(new ShowList());
+        factory.Release(model);
       }
 
       Console.WriteLine("Press any key...");

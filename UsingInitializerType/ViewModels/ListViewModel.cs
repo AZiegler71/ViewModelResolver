@@ -26,10 +26,6 @@ namespace UsingInitializerType.ViewModels
 
       _factory.Create(new ShowCustomerDetails(detailed.Id));
     }
-
-    public void SetModel(ShowList model)
-    {
-    }
   }
 
   public class ShowList
