@@ -1,8 +1,8 @@
 ﻿using System;
 
-using ViewModelResolver.Infrastructure;
+using InfrastructureCrap.Persistence;
 
-namespace ViewModelResolver.ViewModels.UsingAnonymousType
+namespace UsingAnonymousType.ViewModels
 {
   public class DetailViewModel
   {

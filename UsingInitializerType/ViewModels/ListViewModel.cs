@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Linq;
 
-using ViewModelResolver.Infrastructure;
+using InfrastructureCrap.Persistence;
 
-namespace ViewModelResolver.ViewModels.UsingAnonymousType
+namespace UsingInitializerType.ViewModels
 {
-  public class ListViewModel
+  public class ListViewModel : IViewModelFor<ShowList>
   {
     readonly IStore _store;
     readonly IViewModelFactory _factory;
@@ -24,7 +24,15 @@ namespace ViewModelResolver.ViewModels.UsingAnonymousType
       var detailed = customers.First();
       Console.WriteLine("Going to display the details of {0}", detailed.Name);
 
-      _factory.Create<DetailViewModel>(new { customerId = detailed.Id });
+      _factory.Create(new ShowCustomerDetails(detailed.Id));
     }
+
+    public void SetModel(ShowList model)
+    {
+    }
+  }
+
+  public class ShowList
+  {
   }
 }

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ViewModelResolver")]
+[assembly: AssemblyTitle("UsingInitializerType")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ViewModelResolver")]
+[assembly: AssemblyProduct("UsingInitializerType")]
 [assembly: AssemblyCopyright("Copyright ©  2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("ced26f0f-da90-4de7-accb-f8ffc61c4cd8")]
+[assembly: Guid("06c743a2-1fdc-41b5-bf3c-bb95428cbfdc")]
 
 // Version information for an assembly consists of the following four values:
 //

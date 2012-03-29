@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ViewModelResolver.Models
+namespace InfrastructureCrap.Models
 {
   public class Customer
   {

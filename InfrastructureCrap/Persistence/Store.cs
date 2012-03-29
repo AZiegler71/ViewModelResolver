@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 
-using ViewModelResolver.Models;
+using InfrastructureCrap.Models;
 
-namespace ViewModelResolver.Infrastructure
+namespace InfrastructureCrap.Persistence
 {
   public class InMemoryStore : IStore
   {
