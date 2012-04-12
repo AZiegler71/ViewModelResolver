@@ -17,11 +17,9 @@ namespace UsingInitializerType
                 container.Install(new ScopedInfrastructureInstaller());
                 container.Install(new Installer());
 
-                var factory = container.Resolve<IViewModelFactory>();
-                var model = factory.CreateScoped(new ShowList());
+                IViewModelFactory factory = container.Resolve<IViewModelFactory>();
+                IViewModel model = factory.Create<IListViewModel>();
                 Console.WriteLine("Releasing main view model");
-                factory.Release(model);
-                Console.WriteLine("Released");
             }
 
             Console.WriteLine("Press any key...");
@@ -39,7 +37,7 @@ namespace UsingInitializerType
                                Component
                                    .For<IStore>()
                                    .ImplementedBy<InMemoryStore>()
-                                   .LifestyleScoped()
+                                   .LifestyleSingleton()
                                    .OnCreate(x => Console.WriteLine("Creating new store"))
                                    .OnDestroy(x => Console.WriteLine("Destroying store")));
         }

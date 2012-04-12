@@ -1,41 +1,28 @@
-﻿using System.Collections;
-using System.Reflection;
-using Castle.Facilities.TypedFactory;
-using Castle.MicroKernel.Lifestyle;
-using Castle.Windsor;
+﻿using Castle.Windsor;
 using UsingInitializerType.ViewModels;
 
 namespace UsingInitializerType
 {
-    public interface IViewModelFactory
-    {
-        IViewModelFor<TInitializer> Create<TInitializer>(TInitializer model);
-
-        IViewModelFor<TInitializer> CreateScoped<TInitializer>(TInitializer model);
-
-        void Release(object viewModel);
-    }
-
-    internal class ScopedSelector : DefaultTypedFactoryComponentSelector
+    public class ViewModelFactory : IViewModelFactory
     {
         private readonly IWindsorContainer _container;
 
-        public ScopedSelector(IWindsorContainer container)
+        public ViewModelFactory(IWindsorContainer container)
         {
             _container = container;
         }
 
-        protected override IDictionary GetArguments(MethodInfo method, object[] arguments)
+        public IViewModelFor<TArgs> Create<TArgs>(TArgs args)
         {
-            var defaultArgs = base.GetArguments(method, arguments);
-
-            if (method.Name != "CreateScoped")
+            return _container.Resolve<IViewModelFor<TArgs>>(new
             {
-                return defaultArgs;
-            }
+                args
+            });
+        }
 
-            defaultArgs.Add("scope", _container.BeginScope());
-            return defaultArgs;
+        public TViewModel Create<TViewModel>()
+        {
+            return _container.Resolve<TViewModel>();
         }
     }
 }

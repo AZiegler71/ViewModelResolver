@@ -12,15 +12,15 @@ namespace UsingInitializerType
         {
             container.AddFacility<TypedFactoryFacility>();
 
-            container.Register(Classes
-                                   .FromThisAssembly()
-                                   .BasedOn(typeof (IViewModelFor<>))
-                                   .WithServiceFirstInterface()
+            container.Register(Component.For<IViewModelFor<ShowCustomerDetails>>()
+                                   .ImplementedBy<DetailViewModel>()
                                    .LifestyleTransient(),
-                               Component
-                                   .For<IViewModelFactory>()
-                                   .AsFactory(c => c.SelectedWith<ScopedSelector>()),
-                               Component.For<ScopedSelector, ITypedFactoryComponentSelector>());
+                               Component.For<IListViewModel>()
+                                   .ImplementedBy<ListViewModel>()
+                                   .LifestyleTransient(),
+                               Component.For<IViewModelFactory>()
+                                   .ImplementedBy<ViewModelFactory>()
+                                   .LifestyleSingleton());
         }
     }
 }
