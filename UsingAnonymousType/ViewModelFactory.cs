@@ -2,29 +2,30 @@ using Castle.Windsor;
 
 namespace UsingAnonymousType
 {
-  public interface IViewModelFactory
-  {
-    T Create<T>();
-    T Create<T>(object argumentsAsAnonymousType);
-  }
-
-  public class ViewModelFactory : IViewModelFactory
-  {
-    readonly IWindsorContainer _container;
-
-    public ViewModelFactory(IWindsorContainer container)
+    public interface IViewModelFactory
     {
-      _container = container;
+        T Create<T>();
+
+        T Create<T>(object argumentsAsAnonymousType);
     }
 
-    public T Create<T>()
+    public class ViewModelFactory : IViewModelFactory
     {
-      return _container.Resolve<T>();
-    }
+        private readonly IWindsorContainer _container;
 
-    public T Create<T>(object argumentsAsAnonymousType)
-    {
-      return _container.Resolve<T>(argumentsAsAnonymousType);
+        public ViewModelFactory(IWindsorContainer container)
+        {
+            _container = container;
+        }
+
+        public T Create<T>()
+        {
+            return _container.Resolve<T>();
+        }
+
+        public T Create<T>(object argumentsAsAnonymousType)
+        {
+            return _container.Resolve<T>(argumentsAsAnonymousType);
+        }
     }
-  }
 }

@@ -1,6 +1,6 @@
 namespace UsingInitializerType.ViewModels
 {
-  public interface IViewModelFor<in TInitializer>
-  {
-  }
+    public interface IViewModelFor<in TInitializer>
+    {
+    }
 }

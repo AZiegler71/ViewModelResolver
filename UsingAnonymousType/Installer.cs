@@ -4,18 +4,18 @@ using Castle.Windsor;
 
 namespace UsingAnonymousType
 {
-  class Installer : IWindsorInstaller
-  {
-    public void Install(IWindsorContainer container, IConfigurationStore store)
+    internal class Installer : IWindsorInstaller
     {
-      container.Register(Classes
-                           .FromThisAssembly()
-                           .InNamespace("UsingAnonymousType.ViewModels")
-                           .WithServiceSelf()
-                           .LifestyleTransient(),
-                         Component
-                           .For<IViewModelFactory>()
-                           .ImplementedBy<ViewModelFactory>());
+        public void Install(IWindsorContainer container, IConfigurationStore store)
+        {
+            container.Register(Classes
+                                   .FromThisAssembly()
+                                   .InNamespace("UsingAnonymousType.ViewModels")
+                                   .WithServiceSelf()
+                                   .LifestyleTransient(),
+                               Component
+                                   .For<IViewModelFactory>()
+                                   .ImplementedBy<ViewModelFactory>());
+        }
     }
-  }
 }
