@@ -3,7 +3,7 @@ using InfrastructureCrap.Persistence;
 
 namespace UsingInitializerType.ViewModels
 {
-    public class DetailViewModel : IViewModelFor<ShowCustomerDetails>
+    public class DetailViewModel : IDetailViewModel
     {
         private readonly IStore _store;
 
@@ -16,16 +16,6 @@ namespace UsingInitializerType.ViewModels
 
             var c = _store.LoadCustomer(args.CustomerId);
             Console.WriteLine("Customer details: {0}, {1}", c.Name, c.Birthday);
-        }
-    }
-
-    public class ShowCustomerDetails
-    {
-        public int CustomerId { get; private set; }
-
-        public ShowCustomerDetails(int customerId)
-        {
-            CustomerId = customerId;
         }
     }
 }

@@ -4,8 +4,8 @@ namespace UsingInitializerType
 {
     public interface IViewModelFactory
     {
-        IViewModelFor<TArgs> Create<TArgs>(TArgs args);
+        T Create<T, TArgs>(TArgs args) where T : IViewModel;
 
-        TViewModel Create<TViewModel>();
+        T Create<T>() where T : IViewModel;
     }
 }

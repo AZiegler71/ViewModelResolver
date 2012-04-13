@@ -21,7 +21,7 @@ namespace UsingInitializerType.ViewModels
             var detailed = customers.First();
             Console.WriteLine("Going to display the details of {0}", detailed.Name);
 
-            IViewModelFor<ShowCustomerDetails> viewModel = _factory.Create(new ShowCustomerDetails(detailed.Id));
+            var viewModel = _factory.Create<IDetailViewModel, ShowCustomerDetails>(new ShowCustomerDetails(detailed.Id));
         }
     }
 }

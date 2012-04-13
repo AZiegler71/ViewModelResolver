@@ -12,17 +12,17 @@ namespace UsingInitializerType
             _container = container;
         }
 
-        public IViewModelFor<TArgs> Create<TArgs>(TArgs args)
+        public T Create<T, TArgs>(TArgs args) where T : IViewModel
         {
-            return _container.Resolve<IViewModelFor<TArgs>>(new
+            return (T)_container.Resolve<IInstanceFor<T, TArgs>>(new
             {
                 args
             });
         }
 
-        public TViewModel Create<TViewModel>()
+        public T Create<T>() where T : IViewModel
         {
-            return _container.Resolve<TViewModel>();
+            return _container.Resolve<T>();
         }
     }
 }

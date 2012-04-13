@@ -12,7 +12,7 @@ namespace UsingInitializerType
         {
             container.AddFacility<TypedFactoryFacility>();
 
-            container.Register(Component.For<IViewModelFor<ShowCustomerDetails>>()
+            container.Register(Component.For<IInstanceFor<IDetailViewModel, ShowCustomerDetails>>()
                                    .ImplementedBy<DetailViewModel>()
                                    .LifestyleTransient(),
                                Component.For<IListViewModel>()
